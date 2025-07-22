@@ -14,14 +14,14 @@ export async function getUILayoutFromLLM(inputData: object): Promise<any> {
   Only output valid JSON schema without explanation.
   `;
   
-    const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    const res = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: "openai/gpt-3.5-turbo",
+        model: "gpt-4o-mini",
         messages: [
           { role: 'system', content: 'You generate layout schemas.' },
           { role: 'user', content: prompt },
@@ -42,4 +42,4 @@ export async function getUILayoutFromLLM(inputData: object): Promise<any> {
     } catch {
       throw new Error('Invalid JSON returned');
     }
-  }
+  }  
