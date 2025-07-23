@@ -5,8 +5,11 @@ export async function getUILayoutFromLLM(inputData: object): Promise<any> {
     if (!OPENAI_API_KEY) throw new Error("Missing OpenAI API Key");
   
     const prompt = `
-  You are a frontend architect. Given raw JSON data like user profiles or weather info,
-  return a clean and hierarchical UI layout JSON using heading, text, container.
+ You are a frontend architect. Given the following JSON data (e.g., weather info, order data, etc.),
+convert it into a user-friendly layout-friendly JSON, avoiding use of any schema keywords like "type", "container", "heading", "text", "children", etc.
+
+Only return JSON where each key maps directly to real data content or sections.
+No explanation. Only valid JSON output.
   
   JSON:
   ${JSON.stringify(inputData, null, 2)}

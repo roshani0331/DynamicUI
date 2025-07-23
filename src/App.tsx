@@ -60,7 +60,7 @@ const App: React.FC = () => {
             Rendered UI
           </Typography>
           {parsedJSON ? (
-            <DynamicRenderer schema={parsedJSON} />
+            <DynamicRenderer data={parsedJSON} />
           ) : (
             <Typography color="textSecondary" fontStyle="italic">
               No UI rendered yet.
